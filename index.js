@@ -8,11 +8,9 @@ const fs = require("fs");
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
-//
 const render = require("./src/page-template.js");
 
 const teamMembers = [];
-const idArray = [];
 
 function appMenu() {
   function createManager() {
@@ -68,15 +66,17 @@ function appMenu() {
         },
       ])
       .then((answers) => {
-        // TODO: YOUR CODE HERE
-        // create a manager object from class Engineer
-
-        // TODO: YOUR CODE HERE
+        // create a manager object from class Manager
+        const { managerName, managerId, managerEmail, managerOfficeNumber } =
+          answers;
+        const manager = new Manager(
+          managerName,
+          managerId,
+          managerEmail,
+          managerOfficeNumber
+        );
         // add the manager object to teamMembers
-
-        // TODO: YOUR CODE HERE
-        // add manager id to idArray
-
+        teamMembers.push(manager);
         createTeam();
       });
   }
@@ -160,15 +160,17 @@ function appMenu() {
         },
       ])
       .then((answers) => {
-        // TODO: YOUR CODE HERE
         // create an engineer object from class Engineer
-
-        // TODO: YOUR CODE HERE
+        const { engineerName, engineerId, engineerEmail, engineerGitHub } =
+          answers;
+        const engineer = new Engineer(
+          engineerName,
+          engineerId,
+          engineerEmail,
+          engineerGitHub
+        );
         // add the engineer object to teamMembers
-
-        // TODO: YOUR CODE HERE
-        // add engineer id to idArray
-
+        teamMembers.push(engineer);
         createTeam();
       });
   }
@@ -224,14 +226,16 @@ function appMenu() {
         },
       ])
       .then((answers) => {
-        // TODO: YOUR CODE HERE
-        // create an intern object from class Engineer
-
-        // TODO: YOUR CODE HERE
+        // create an intern object from class Intern
+        const { internName, internId, internEmail, internSchool } = answers;
+        const intern = new Intern(
+          internName,
+          internId,
+          internEmail,
+          internSchool
+        );
         // add the intern object to teamMembers
-
-        // TODO: YOUR CODE HERE
-        // add intern id to idArray
+        teamMembers.push(intern);
         createTeam();
       });
   }
@@ -242,6 +246,7 @@ function appMenu() {
       fs.mkdirSync(OUTPUT_DIR);
     }
     fs.writeFileSync(outputPath, render(teamMembers), "utf-8");
+    console.log("Successfully wrote team.html");
   }
 
   createManager();
