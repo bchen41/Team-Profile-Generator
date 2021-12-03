@@ -2,7 +2,7 @@
 
 ## Description
 
-This project uses Node.js to prompt managers with questions. The inputs will be used to generate a webpage displaying their team's basic information for quick access to the team's emails and GitHub profiles. Futhermore, this project uses to run unit tests.
+This project uses Node.js to prompt managers with questions. The inputs will be used to generate a webpage displaying their team's basic information for quick access to the team's emails and GitHub profiles. Futhermore, this project uses Jest to run unit tests.
 
 ## Table of Contents
 
